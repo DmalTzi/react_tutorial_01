@@ -23,3 +23,12 @@ exports.create = async (req, res) => {
 
 }
 
+exports.getAllblogs = async (req,res) =>{
+    const getblogs = await Blogs.find({})
+    try{
+        res.json(getblogs)
+    }
+    catch(err){
+        res.status(400).json({error:err.message})
+    }
+}

@@ -1,12 +1,15 @@
 import NavbarComponent from "./components/NavbarComponent";
-
+import axios from "axios"
+import {usestate,useEffect} from "react"
 
 function App() {
+
+  const [blogs, setBlogs] = usestate([])
+
   return (
     <div className="container p-5">
       <NavbarComponent/>
-      <h1>MERN STACK | Workshop</h1>
-      <a className="btn btn-primary" href="/create">เขียนบทความ</a>
+      
     </div>
   );
 }
