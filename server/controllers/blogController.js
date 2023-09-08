@@ -1,10 +1,13 @@
 //connect db 
 const slugify = require("slugify")
 const Blogs = require("../models/blogs")
+const { v4: uuidv4} = require("uuid")
 //save data
 exports.create = async (req, res) => {
     const {title,content,author} = req.body
-    const slug = slugify(title)
+    let slug = slugify(title)
+
+    if(!slug)slug=uuidv4();
 
    try{ //validate
     switch (true) {
@@ -29,6 +32,16 @@ exports.getAllblogs = async (req,res) =>{
         res.json(getblogs)
     }
     catch(err){
+        res.status(400).json({error:err.message})
+    }
+}
+
+exports.singleBlog = async (req,res) =>{
+    const {slug} = req.params
+    const blog = await Blogs.findOne({slug})
+    try{
+        res.json(blog)
+    }catch(err){
         res.status(400).json({error:err.message})
     }
 }
