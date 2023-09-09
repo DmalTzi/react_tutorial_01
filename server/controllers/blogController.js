@@ -18,7 +18,7 @@ exports.create = async (req, res) => {
     }
     //save data
     const blog = await Blogs.create({title,content,author,slug})
-    res.json(blog)
+        res.json(blog)
     }
     catch (err) {
         res.status(400).json({error:err.message})
@@ -44,4 +44,26 @@ exports.singleBlog = async (req,res) =>{
     }catch(err){
         res.status(400).json({error:err.message})
     }
+}
+
+exports.remove = async (req,res) =>{
+    const {slug} = req.params
+    try{
+        await Blogs.findOneAndRemove({slug})
+        res.json({Status:"Success"})
+    }catch(err){
+        res.status(400).jsn({error:err.message})
+    }
+}
+
+exports.update = async (req, res) =>{
+    const {slug} = req.params
+    const {title,content,author} = req.body
+    try{
+        const find_update = await Blogs.findOneAndUpdate({slug},{title,content,author},{new:true})
+        res.json(find_update)
+    }catch(err){
+        res.status(400).jsn({error:err.message})
+    }
+    
 }

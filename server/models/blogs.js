@@ -1,8 +1,3 @@
-//name aka title
-//conntent
-//author aka admin
-//slug aka url
-
 const mongoose = require("mongoose")
 
 const blogSchema = mongoose.Schema({
