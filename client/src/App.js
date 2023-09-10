@@ -15,7 +15,8 @@ function App() {
       const respone = await axios.get(`${process.env.REACT_APP_API}/blogs`)
       setBlogs(respone.data)
     }catch(err){
-      Swal.fire("Alert",err.response.data.error,"error")
+      console.log(err)
+      // Swal.fire("Alert",err.response.data.error,"error")
     }
   }
   useEffect(()=>{

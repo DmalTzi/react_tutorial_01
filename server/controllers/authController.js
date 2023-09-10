@@ -3,8 +3,7 @@ const { expressjwt: JWT } = require("express-jwt");
 
 exports.login=async(req,res)=>{
     const {username,password} = req.body
-    console.log(password)
-    if(password === process.env.password){
+    if(password === process.env.PASSWORD){
         const token = await jwt.sign({username},process.env.JWT_SECRET,{expiresIn:"1d"})
         return res.json({token,username})
     }else{
