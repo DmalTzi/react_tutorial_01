@@ -22,14 +22,14 @@ const LoginComponent=(props)=>{
         try{
             const login = await axios.post(`${process.env.REACT_APP_API}/login`,{username,password})
             Swal.fire("แจ้งเตือน","เข้าสู่ระบบสำเร็จ","success")
-            authenticate(login, ()=>props.history.push("/create"))
+            authenticate(login, ()=>props.history.push(`${process.env.REACT_APP_DEFAULE_PATH}/create`))
         }catch(err){
             Swal.fire("แจ้งเตือน",err.response.data.err,"error")
         }
     }
 
     useEffect(()=>{
-        getUser() && props.history.push("/")
+        getUser() && props.history.push(`${process.env.REACT_APP_DEFAULE_PATH}/`)
          // eslint-disable-next-line
     },[])
 

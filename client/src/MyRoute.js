@@ -11,11 +11,11 @@ const MyRoute = () => {
     return(
         <BrowserRouter>
             <Switch>
-                <Route path="/" exact component={App}/>
-                <AdminRoute path="/create" exact component={FormComponent}/>
-                <Route path="/blog/:slug" exact component={SingleComponent}/>
-                <AdminRoute path="/blog/edit/:slug" exact component={EditComponent}/>
-                <Route path="/login" exact component={LoginComponent}/>
+                <Route path={`${process.env.REACT_APP_DEFAULE_PATH}/`} exact component={App}/>
+                <AdminRoute path={`${process.env.REACT_APP_DEFAULE_PATH}/create`} exact component={FormComponent}/>
+                <Route path={`${process.env.REACT_APP_DEFAULE_PATH}/blog/:slug`} exact component={SingleComponent}/>
+                <AdminRoute path={`${process.env.REACT_APP_DEFAULE_PATH}/blog/edit/:slug`} exact component={EditComponent}/>
+                <Route path={`${process.env.REACT_APP_DEFAULE_PATH}/login`} exact component={LoginComponent}/>
             </Switch>
         </BrowserRouter>
     )

@@ -56,10 +56,10 @@ function App() {
             <Link to={`/blog/${blog.slug}`}>
               <h2>{blog.title}</h2>
             </Link>
-            <div className="pt-3">{parse(blog.content.substring(0,250))}</div>
+            <div className="pt-3"><p>{parse(blog.content.substring(0,250))}........</p></div>
             <p className="text-muted">ผู้เขียน : {blog.author}, เผยแพร่ : {new Date(blog.createdAt).toLocaleString()}</p>
             {getUser() && <div>
-              <Link className="btn btn-outline-success" to={`/blog/edit/${blog.slug}`}>แก้ไขบทความ</Link> &nbsp;
+              <Link className="btn btn-outline-success" to={`${process.env.REACT_APP_DEFAULE_PATH}/blog/edit/${blog.slug}`}>แก้ไขบทความ</Link> &nbsp;
               <button className="btn btn-outline-danger" onClick={()=>confirmDelete(blog.slug)}>ลบบทความ</button>
             </div>
             }

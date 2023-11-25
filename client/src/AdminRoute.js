@@ -8,7 +8,7 @@ const AdminRoute=({component:Component,...rest})=>(
             getUser() ? 
             (<Component {...props}/>) :
             (<Redirect 
-                to={{pathname:"/login",state:{from:props.location}}}
+                to={{pathname:`${process.env.REACT_APP_DEFAULE_PATH}/login`,state:{from:props.location}}}
                 />
             )
         } 
